@@ -1,45 +1,78 @@
-from llm import ask_ai
-from commands import execute_command
 from voice import speak
 from speech import listen
-from memory_handler import process_memory
+from command_handler import handle_command
 
-while True:
 
-    query = listen().lower()
-    print("Heard:", query)
+def voice_mode():
 
-    if query == "exit":
-        break
+    print("\nVoice Chat Mode")
 
     WAKE_WORDS = ["nova", "hey nova"]
 
     while True:
 
-        speak("Yes?")
+        query = listen().lower()
 
-        command = listen()
+        if any(word in query for word in WAKE_WORDS):
 
-        # 1. Memory handling first
-        memory_response = process_memory(command)
+            speak("Yes?")
 
-        if memory_response:
-            print("Nova:", memory_response)
-            speak(memory_response)
-            continue
+            command = listen()
 
-        # 2. System commands
-        result = execute_command(command)
+            if command.lower() in [
+                "exit",
+                "quit",
+                "back"
+            ]:
+                break
 
-        if result:
-            print("Nova:", result)
-            speak(result)
-            continue
+            response = handle_command(command)
 
-        # 3. LLM fallback
-        answer = ask_ai(command)
+            print("\nNova:", response)
 
-        print("Nova:", answer)
-        speak(answer)
+            speak(response)
 
-        continue
+
+def text_mode():
+
+    print("\nText Chat Mode")
+
+    while True:
+
+        command = input("You: ")
+
+        if command.lower() in [
+            "exit",
+            "quit",
+            "back"
+        ]:
+            break
+
+        response = handle_command(command)
+
+        print("\nNova:", response)
+
+        speak(response)
+
+
+while True:
+
+    print("\n===== NOVA AI =====")
+    print("1. Text Chat")
+    print("2. Voice Chat")
+    print("3. Exit")
+
+    choice = input("Choose option: ")
+
+    if choice == "1":
+        text_mode()
+
+    elif choice == "2":
+        voice_mode()
+
+    elif choice == "3":
+        print("Goodbye!")
+        break
+
+    else:
+        print("Invalid option")
