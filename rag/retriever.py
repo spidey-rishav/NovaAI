@@ -1,8 +1,4 @@
-from sentence_transformers import SentenceTransformer
-
-model = SentenceTransformer(
-    "all-MiniLM-L6-v2"
-)
+from rag.model_loader import model
 
 def retrieve(query, index, chunks, k=3):
 
@@ -13,9 +9,4 @@ def retrieve(query, index, chunks, k=3):
         k
     )
 
-    results = []
-
-    for idx in indices[0]:
-        results.append(chunks[idx])
-
-    return results
+    return [chunks[i] for i in indices[0]]

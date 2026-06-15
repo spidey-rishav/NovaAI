@@ -14,9 +14,11 @@ def ask_ai(prompt):
         "content": prompt
     })
 
+    recent_history = chat_history[-10:]   # keep only last 10 messages
+
     response = ollama.chat(
-        model="phi3",
-        messages=chat_history
+        model="gemma3:1b",
+        messages=recent_history
     )
 
     answer = response["message"]["content"]
