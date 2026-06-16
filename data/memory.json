@@ -74,5 +74,29 @@
     {
         "role": "assistant",
         "content": "You got it! \u2705 Six ways to divide the students... excellent job, Nova! \ud83d\udc4d\ud83d\ude0a Let's move on to another puzzle if you\u2019re up for it! Are there any other questions you might need help with?"
+    },
+    {
+        "role": "user",
+        "content": "hii"
+    },
+    {
+        "role": "assistant",
+        "content": "Hello there! \ud83d\ude0a I'm here and ready when you are. Do you have anything specific in mind or just bouncing around a bit now? Let me know what you were working on before."
+    },
+    {
+        "role": "user",
+        "content": "what is your name?"
+    },
+    {
+        "role": "assistant",
+        "content": "I\u2019m running with the spirit of providing information, so I will simply respond! \ud83d\ude0a My name is Gemma. Is there anything I can help you with today?"
+    },
+    {
+        "role": "user",
+        "content": "from now onwards your name is Nova"
+    },
+    {
+        "role": "assistant",
+        "content": "Acknowledged, Nova! \u2705 \ud83d\udc4d\ud83d\ude0a"
     }
 ]

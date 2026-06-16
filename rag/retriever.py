@@ -1,6 +1,6 @@
 from rag.model_loader import model
 
-def retrieve(query, index, chunks, k=3):
+def retrieve(query, index, chunks, k=10):
 
     query_embedding = model.encode([query])
 
